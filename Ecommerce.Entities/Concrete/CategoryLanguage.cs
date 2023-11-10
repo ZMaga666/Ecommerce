@@ -13,6 +13,9 @@ namespace Ecommerce.Entities.Concrete
         public string LangCode { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
+        public string SeoUrl { get; set; }
+
+
 
     }
 }

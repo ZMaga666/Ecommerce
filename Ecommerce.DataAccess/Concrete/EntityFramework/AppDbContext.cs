@@ -16,7 +16,7 @@ namespace Ecommerce.DataAccess.Concrete.EntityFramework
         {
             optionsBuilder.UseSqlServer("Server=localhost;Database=Ecommerce;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True");
         }   
-        public DbSet<Category>Categories { get; set; }
+        public DbSet<Category>Categorie { get; set; }
         public DbSet<CategoryLanguage> CategoryLanguages{ get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Picture> Pictures { get; set; }

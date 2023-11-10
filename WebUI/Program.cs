@@ -1,3 +1,8 @@
+using Ecommerce.Business.Abstract;
+using Ecommerce.Business.Concrete;
+using Ecommerce.DataAccess.Abstract;
+using Ecommerce.DataAccess.Concrete.EntityFramework;
+
 namespace WebUI
 {
     public class Program
@@ -9,6 +14,10 @@ namespace WebUI
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddScoped<ICategoryService, CategoryManager>();
+            builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
+
 
             var app = builder.Build();
 
@@ -22,14 +31,23 @@ namespace WebUI
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+                
             app.UseRouting();
 
             app.UseAuthorization();
 
+            app.UseEndpoints(endpoint =>
+            {   
+                endpoint.MapControllerRoute(
+
+                    name: "areas",
+                pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}/{seourl?}");
+
+            });
+
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Home}/{action=Index}/{id?}/{seourl?}");
 
             app.Run();
         }
