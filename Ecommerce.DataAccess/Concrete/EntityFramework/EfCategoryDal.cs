@@ -58,7 +58,7 @@ namespace Ecommerce.DataAccess.Concrete.EntityFramework
                 .Select(x=> new CategoryHomeListDTO
                 { Id=x.Category.Id,
                 CategoryName=x.CategoryName,
-                SeoUrl=x.Category.SeoUrl,
+                //SeoUrl=x.Category.SeoUrl,
                 PhotoUrl=x.Category.PhotoUrl,
                 ProductCount=0,
         

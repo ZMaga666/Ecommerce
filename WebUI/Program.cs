@@ -2,6 +2,8 @@ using Ecommerce.Business.Abstract;
 using Ecommerce.Business.Concrete;
 using Ecommerce.DataAccess.Abstract;
 using Ecommerce.DataAccess.Concrete.EntityFramework;
+using Ecommerce.Entities.Concrete;
+using Microsoft.AspNetCore.Identity;
 
 namespace WebUI
 {
@@ -15,8 +17,16 @@ namespace WebUI
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddDefaultIdentity<User>().AddRoles<IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+
             builder.Services.AddScoped<ICategoryService, CategoryManager>();
             builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
+
+            builder.Services.AddScoped<AppDbContext>();
+
+
+
+
 
 
             var app = builder.Build();

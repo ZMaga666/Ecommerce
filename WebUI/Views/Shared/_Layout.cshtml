@@ -40,13 +40,22 @@
             </div>
             <div class="col-lg-6 text-center text-lg-right">
                 <div class="d-inline-flex align-items-center">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <button class="dropdown-item" type="button">Sign in</button>
-                            <button class="dropdown-item" type="button">Sign up</button>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @(await Component.InvokeAsync("UserAuth"));
+                        
+                    }
+                    else
+                    {
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="/auth/login">Sign in</a>
+                                <a class="dropdown-item" href="/auth/register">Sign up</a>
+                            </div>
                         </div>
-                    </div>
+                    }
+
                     <div class="btn-group mx-2">
                         <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">USD</button>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -171,7 +180,7 @@
         </div>
     </div>
     <!-- Navbar End -->
-    @RenderBody
+    @RenderBody()
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-secondary mt-5 pt-5">
         <div class="row px-xl-5 pt-5">

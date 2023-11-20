@@ -10,7 +10,7 @@ namespace Ecommerce.Entities.DTOs
     {
         public int Id { get; set; }
         public string CategoryName { get; set; }
-        public string SeoUrl { get; set; }
+        //public string SeoUrl { get; set; }
         public int ProductCount { get; set; }
         public string PhotoUrl { get; set; }
 

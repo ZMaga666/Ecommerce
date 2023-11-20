@@ -13,7 +13,7 @@ namespace Ecommerce.Entities.Concrete
         public string SeoUrl { get; set; }
 
 
-
+         
 
     }
 }
