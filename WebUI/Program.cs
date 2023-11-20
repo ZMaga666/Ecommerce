@@ -47,7 +47,7 @@ namespace WebUI
             app.UseAuthorization();
 
             app.UseEndpoints(endpoint =>
-            {   
+            {
                 endpoint.MapControllerRoute(
 
                     name: "areas",
